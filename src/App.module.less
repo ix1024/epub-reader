@@ -1,0 +1,223 @@
+.wrap {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  justify-content: center;
+  justify-content: space-around;
+  justify-content: space-evenly;
+  align-items: center;
+  align-items: end;
+  align-items: start;
+  flex-wrap: wrap;
+  user-select: none;
+  // flex-wrap: wrap-reverse;
+  // flex-flow: row wrap;
+  // flex-direction: column-reverse;
+  // align-content: center;
+  align-content: space-evenly;
+  // align-content:space-around;
+  // align-content:space-between;
+  // align-content:flex-start;
+  // align-content:flex-end;
+  // align-content:stretch;
+  // align-content:baseline;
+  // align-content:inherit;
+  // align-content:initial;
+  // align-content:unset;
+  // align-content:revert;
+  // align-content:start;
+  // align-content:end;
+  // align-content:r
+
+  & > div {
+    @size: 200px;
+    // width: @size;
+    height: @size;
+    color: #fff;
+    flex-basis: @size; //属性定义了在分配多余空间之前，项目占据的主轴空间，浏览器会根据这个属性来计算主轴是否有多余空间。它的默认值为auto，
+    // flex-grow: 100; //属性定义项目的放大比例，默认为0，即如果存在剩余空间时也不放大
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    // flex-shrink: 1;
+    // flex-grow: 1;
+    //  order: 10;
+    // &:nth-child(1) {
+    //   flex-grow: 1;
+    //   flex-shrink: -1;
+    //   // order: 1;
+    //   align-self: stretch;
+    //   background-color: orange !important;
+    // }
+    // &:nth-child(2) {
+    //   flex-grow: 2;
+    //   // order: 2;
+    //   align-self: flex-end;
+    //   background-color: blue !important;
+    // }
+    // &:nth-child(3) {
+    //   flex-grow: 4;
+    //   align-self: stretch;
+    //   // order: 3;
+    //   background-color: green !important;
+    // }
+    // flex: 0 0 200px; /* 固定宽度为 200px */
+  }
+}
+.box {
+  & > div {
+    display: flex;
+    // justify-content: center;
+    // align-items: center;
+    font-size: 36px;
+    color: #fff;
+    place-items: center;
+    // align-items: center;
+    place-content: center;
+    // place-items: center; /* 垂直和水平居中 */
+
+    &:nth-child(1) {
+      display: grid;
+      // justify-items: center;
+      // align-items: center;
+      // grid-area:  2 / 1 / span 2 / span 3;
+    }
+    &:nth-child(9n + 1) {
+      background: red;
+    }
+    &:nth-child(9n + 2) {
+      background: blue;
+      flex: 1 1 200px;
+    }
+    &:nth-child(9n + 3) {
+      background: yellow;
+      flex-grow: 1;
+      flex-shrink: 1;
+    }
+    &:nth-child(9n + 4) {
+      background: green;
+    }
+    &:nth-child(9n + 5) {
+      background: pink;
+    }
+    &:nth-child(9n + 6) {
+      background: orange;
+    }
+    &:nth-child(9n + 7) {
+      background: purple;
+      // flex-grow: 0.3;
+    }
+    &:nth-child(9n + 8) {
+      background: black;
+      // flex-grow: 0.5;
+    }
+    &:nth-child(9n + 9) {
+      background: gray;
+      // flex-grow: 0.8;
+    }
+  }
+}
+.grid {
+  @repeat: 4;
+  @size: 150px;
+  display: grid;
+  height: 100%;
+  // grid-gap: 20px;
+  gap: 20px;
+  grid-auto-flow: column; /* 从上到下排列 */
+  // place-items: center;
+  // grid-auto-flow: column; /* 从左到右排列 */
+  // justify-content: center;
+  // align-items: center;
+  place-content: center;
+  // place-items: center;
+
+  grid-template-columns: repeat(@repeat, @size);
+  // grid-template-columns: repeat(2, @size) repeat(auto-fill, 150px);
+  grid-template-rows: repeat(@repeat, @size);
+  // grid-auto-rows: 0.5fr;
+  // grid-auto-columns: 1fr;
+  // grid-area: 1 / 1 / 2 / 2;
+  grid-template-areas:
+    "header header header"
+    "sidebar main main"
+    "footer footer footer";
+  .header {
+    grid-area: header;
+  }
+  & > div {
+    border-radius: 50%;
+    user-select: none;
+    overflow: hidden;
+    animation: rotate 2s linear infinite;
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: rotate(180deg);
+    opacity: 0.8;
+    // font-size: 48px;
+    // border-radius: 10% 20% 30% 50%;
+  }
+  100% {
+    transform: rotate(360deg);
+    opacity: 1;
+  }
+}
+
+.demo1 {
+  position: relative;
+  width: 50%;
+  padding-top: 50%;
+  // 比例
+  // aspect-ratio: 1 / 1;
+  background-color: orange;
+  & > div {
+    position: absolute;
+    inset: 0;
+    background-color: blue;
+  }
+  // 等比例
+  &::after {
+    position: absolute;
+    display: block;
+    display: none;
+    content: "";
+    display: block;
+    padding-bottom: 50%;
+  }
+}
+.color {
+  font-size: 6rem;
+  display: inline-block;
+  color: transparent;
+  background-clip: text;
+  font-weight: bold;
+  --tw-gradient-to: #f59e0b;
+  --tw-gradient-from: #8b5cf6;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+.wrap1 {
+  height: 100%;
+  display: flex;
+  // grid-template-columns: 1fr 1fr;
+  // grid-template-rows: 1fr 1fr;
+  // gap: 10px;
+  .left {
+    min-width: 300px;
+    max-width: 80%;
+    background-color: #eee;
+    border: 1px solid #e5e5e5;
+  }
+  & > div {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+}

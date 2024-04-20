@@ -1,0 +1,119 @@
+.wrap {
+  --padding: 10px;
+  --box-shadow-color: rgba(0, 0, 0, 0.1);
+  --header-height: 60px;
+  --border-color: #e5e5e5;
+  display: flex;
+  //   flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  font-size: 12px;
+  .left,
+  .middle,
+  .right {
+    height: 100vh;
+  }
+  .left {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    // width: 230px;
+    background-color: #fff;
+    box-shadow: 0 0 20px var(--box-shadow-color);
+    & > div {
+      &:nth-child(1) {
+        height: var(--header-height);
+        padding: 0 var(--padding);
+        // border: 1px solid var(--border-color);
+      }
+      &:nth-child(2) {
+        flex: 1;
+        overflow: auto;
+        padding: var(--padding) 0;
+      }
+      &:nth-child(3) {
+        padding: var(--padding);
+      }
+    }
+  }
+  .middle {
+    width: 300px;
+    background-color: #f3f7fa;
+    padding: 0 var(--padding);
+    display: flex;
+    flex-direction: column;
+    & > div {
+      display: flex;
+      flex-direction: column;
+      padding: var(--padding);
+      &:nth-child(1) {
+        display: flex;
+        justify-content: center;
+        height: var(--header-height);
+        font-size: 18px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: #62727d;
+        font-weight: bold;
+        // border: 1px solid var(--border-color);
+      }
+      &:nth-child(2) {
+        flex: 1;
+        overflow: auto;
+        :global {
+          .ant-menu {
+            background-color: transparent;
+          }
+        }
+      }
+      &:nth-child(3) {
+        padding-bottom: var(--padding);
+      }
+    }
+  }
+  .right {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+    margin-right: var(--padding);
+  }
+  .rHeader {
+    display: flex;
+    height: var(--header-height);
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0 0 20px var(--box-shadow-color);
+    position: relative;
+    // border-bottom: 1px solid var(--border-color);
+    & > div {
+      padding: var(--padding);
+      &:nth-child(1) {
+        padding-left: var(--padding);
+      }
+      &:nth-child(2) {
+        flex: 1;
+      }
+      &:nth-child(1) {
+        padding-right: var(--padding);
+      }
+    }
+  }
+  .rContent {
+    background-color: #fff;
+    flex: 1;
+  }
+  .rFooter {
+    height: 35px;
+  }
+}
+.open {
+  font-size: 28px;
+}
+.middleAlign {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
