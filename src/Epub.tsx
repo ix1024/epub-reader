@@ -9,7 +9,7 @@ import {
   UnorderedListOutlined,
 } from "@ant-design/icons";
 import css from "./Epub.module.less";
-import { Button, Empty, Menu, Spin } from "antd";
+import { Button, Dropdown, Empty, Menu, Spin } from "antd";
 import { useWindow } from "./useWindow";
 import { icons } from "antd/es/image/PreviewGroup";
 
@@ -221,7 +221,12 @@ const Epub = () => {
         const { label, value, children } = item;
         return {
           key: `${label}-${value}`,
-          label: <span data-value={value}>{label}</span>,
+          label: <span data-value={value}
+            onClick={(ev) => {
+              console.log(ev);
+              ev.stopPropagation();
+            }}
+          >{label}</span>,
           value,
           children: children?.length ? reset(children) : undefined,
         };
@@ -262,6 +267,13 @@ const Epub = () => {
       console.error("获取目录下文件时出错:", err);
     }
   };
+  const menu = (
+    <Menu>
+      <Menu.Item key="1">1st menu item</Menu.Item>
+      <Menu.Item key="2">2nd menu item</Menu.Item>
+      <Menu.Item key="3">3rd menu item</Menu.Item>
+    </Menu>
+  );
   return (
     <div className={css.wrap}>
       <div
@@ -314,8 +326,7 @@ const Epub = () => {
       </div>
       <div className={css.middle} ref={middleRef}>
         <div>
-          {title ||
-            "原则：应对变化中的世界秩序 (瑞·达利欧 （Ray Dalio）) (Z-Library).epub"}
+          {title   }
         </div>
         <div>
           <Spin spinning={viewLoading}>
@@ -344,9 +355,34 @@ const Epub = () => {
       </div>
       <div className={css.right} ref={rightRef}>
         <div className={css.rHeader}>
-          <div></div>
+          <div>  {title   }</div>
           <div></div>
           <div>
+            <Dropdown
+              
+            overlay={ <Spin spinning={viewLoading}>
+            <Menu
+              items={items}
+              onSelect={async (arg: any) => {
+                const { domEvent } = arg;
+                const { target } = domEvent;
+                const { dataset } = target;
+                const { value } = dataset;
+                setViewLoading(true);
+                try {
+                  await bookRef?.current?.rendition?.display(value);
+                  setViewLoading(false);
+                } catch (error) {
+                  const list = value?.split("/");
+                  list.shift();
+                  await bookRef?.current?.rendition?.display(list?.join("/"));
+                  setViewLoading(false);
+                }
+              }}
+            />
+          </Spin>} >
+              <span>sdf</span>
+            </Dropdown>
             <Button
               disabled={loading}
               size="small"
