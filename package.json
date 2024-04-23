@@ -15,6 +15,7 @@
     "@tauri-apps/api": "^1.5.3",
     "antd": "^5.16.1",
     "canvas-confetti": "^1.9.2",
+    "crypto-js": "^4.2.0",
     "epubjs": "^0.3.93",
     "monaco-editor": "^0.47.0",
     "monaco-html": "^3.9.0",

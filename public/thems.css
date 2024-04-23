@@ -1,0 +1,31 @@
+.default {
+  background-color: inherit;
+  color: inherit;
+}
+
+a:link {
+  color: inherit;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.theme1 {
+  background-color: #f5efda;
+  color: #333;
+}
+
+.theme2 {
+  background-color: #c0edc6;
+  color: inherit;
+}
+
+.theme3 {
+  background-color: #000000;
+  color: #fafafa;
+}
+
+.theme4 {
+  background-color: #f8f8fa;
+  color: #333;
+}
