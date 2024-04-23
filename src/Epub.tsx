@@ -330,7 +330,12 @@ const Epub = () => {
         const { label, value, children } = item;
         return {
           key: `${label}-${value}`,
-          label: <span data-value={value}>{label}</span>,
+          label: <span data-value={value}
+            onClick={(ev) => {
+              console.log(ev);
+              ev.stopPropagation();
+            }}
+          >{label}</span>,
           value,
           children: children?.length ? reset(children) : undefined,
         };
@@ -426,7 +431,6 @@ const Epub = () => {
       console.error("获取目录下文件时出错:", err);
     }
   };
-
   return (
     <>
       <div className={css.bookWrap}>
